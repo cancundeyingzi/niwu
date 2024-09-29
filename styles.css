@@ -25,6 +25,11 @@ body {
     transition: background-color 1s ease, color 1s ease; /* 添加过渡效果 */
     background-color: var(--theme-color); /* 确保背景颜色应用到整个页面 */
     padding-top: 50px;
+
+
+
+    position: relative;
+    overflow: hidden;
 }
 
 /* 容器样式 */
@@ -34,8 +39,7 @@ body {
     align-items: center; /* 水平居中对齐 */
     width: 100%;
     margin-top: 10px; /* 添加顶部边距 */
-    position: fixed; /* 固定在页面顶部 */
-    top: 0; /* 距离顶部0 */
+    position: relative; /* 相对定位，以便内容绝对定位 */
     z-index: 1000; /* 确保在其他内容之上 */
 }
 
@@ -107,6 +111,7 @@ body {
     /*transition: background-color 1s ease;*/
     /*backdrop-filter: blur(10px); !* 毛玻璃效果 *!*/
     /*background: rgba(230, 238, 249,0.8); !* 半透明背景效果不佳，不做了。浪费性能 *!*/
+
 }
 
 /* 响应式设计：当屏幕宽度小于700px时 */
@@ -120,13 +125,114 @@ body {
     }
 }
 
+
+.hello {
+    transition: transform 0.5s ease;
+    display: flex; /* 使用flex布局 */
+    flex-direction: column; /* 保持子元素垂直排列 */
+    width: 70%; /* 确保宽度占满父容器 */
+    box-sizing: border-box; /* 包括padding和border在内的宽度计算 */
+
+}
+
+.hello.move-left {
+    transform: translateX(-200%);
+
+}
+
+/* 内容切换动画相关样式 */
+
+/* 初始化所有内容区域为隐藏状态 */
+.hello,
+.立即上车,
+.睡觉,
+.吃饭 {
+    opacity: 0;
+    position: absolute;
+    top: 100px; /* 根据实际布局调整 */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* 根据需要调整宽度 */
+    transition: opacity 0.5s ease;
+    z-index: 0; /* 默认层级 */
+}
+
+/* 活动状态显示内容 */
+.active {
+    opacity: 1;
+    z-index: 1; /* 置于上层 */
+}
+
+/* 定义滑入和滑出的关键帧动画 */
+
+@keyframes slideLeftIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+}
+
+@keyframes slideLeftOut {
+    from {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-150%);
+        opacity: 0;
+    }
+}
+
+@keyframes slideRightIn {
+    from {
+        transform: translateX(-200%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+}
+
+@keyframes slideRightOut {
+    from {
+        transform: translateX(-50%);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(0%);
+        opacity: 0;
+    }
+}
+
+/* 应用动画类 */
+.slide-left-in {
+    animation: slideLeftIn 0.5s forwards;
+}
+
+.slide-left-out {
+    animation: slideLeftOut 0.5s forwards;
+}
+
+.slide-right-in {
+    animation: slideRightIn 0.5s forwards;
+}
+
+.slide-right-out {
+    animation: slideRightOut 0.5s forwards;
+}
+
 /* 卡片容器样式 */
 .cards {
     display: flex;
     flex-wrap: wrap; /* 子元素换行 */
     justify-content: space-between; /* 子元素之间的间距 */
     gap: 5%; /* 卡片之间的间距 */
-    width: 70%; /* 宽度为70% */
+    width: 100%; /* 宽度为70% */
     max-width: 1200px; /* 最大宽度 */
     margin-top: 15px; /* 添加顶部边距 */
 }
