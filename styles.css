@@ -1,6 +1,6 @@
 /* 定义全局主题颜色 */
 :root {
-    --theme-color: #e8e8e8;
+    --theme-color: #e8e8e8; /* 定义CSS变量，主题颜色 */
 }
 
 /* 重置所有元素的默认边距和填充 */
@@ -14,227 +14,478 @@ html,
 body {
     width: 100%;
     height: 100%;
+    /*background-color: var(--theme-color); !* 使用CSS变量设置背景颜色 *!*/
 }
 
+/* 设置body的布局为垂直方向的flex布局，内容居中对齐 */
 body {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: background-color 1s ease, color 1s ease;
-    background-color: var(--theme-color);
+    flex-direction: column; /* 垂直方向排列子元素 */
+    align-items: center; /* 水平居中对齐 */
+    transition: background-color 1s ease, color 1s ease; /* 添加过渡效果 */
+    background-color: var(--theme-color); /* 确保背景颜色应用到整个页面 */
     padding-top: 50px;
 }
 
 /* 容器样式 */
 .container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column; /* 垂直方向排列子元素 */
+    align-items: center; /* 水平居中对齐 */
     width: 100%;
-    margin-top: 10px;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
+    margin-top: 10px; /* 添加顶部边距 */
+    position: fixed; /* 固定在页面顶部 */
+    top: 0; /* 距离顶部0 */
+    z-index: 1000; /* 确保在其他内容之上 */
 }
 
 /* 标签栏样式 */
 .tabs {
     display: flex;
-    position: relative;
-    background-color: #fff;
-    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15);
-    padding: 0.75rem;
-    border-radius: 99px;
-    transition: background-color 1s ease, box-shadow 1s ease;
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.5);
+    position: relative; /* 相对定位 */
+    background-color: #fff; /* 背景颜色为白色 */
+    box-shadow: 0 0 1px 0 rgba(24, 94, 224, 0.15), 0 6px 12px 0 rgba(24, 94, 224, 0.15); /* 阴影效果 */
+    padding: 0.75rem; /* 内边距 */
+    border-radius: 99px; /* 圆角 */
+    transition: background-color 1s ease, box-shadow 1s ease; /* 添加过渡效果 */
+    backdrop-filter: blur(10px); /* 毛玻璃效果 */
+    background: rgba(255, 255, 255, 0.5); /* 半透明背景 */
 }
 
+/* 设置标签栏内所有元素的层级 */
 .tabs * {
-    z-index: 2;
+    z-index: 2; /* 设置层级，确保内容在滑块之上 */
 }
 
+/* 隐藏单选按钮 */
 .container input[type="radio"] {
-    display: none;
+    display: none; /* 隐藏元素 */
 }
 
+/* 标签样式 */
 .tab {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center; /* 垂直居中对齐 */
+    justify-content: center; /* 水平居中对齐 */
     height: 30px;
-    padding: 0 15px;
-    font-size: .8rem;
-    color: black;
-    font-weight: 900;
-    border-radius: 99px;
-    cursor: pointer;
-    transition: color 0.15s ease-in;
-    white-space: nowrap;
+    padding: 0 15px; /* 添加左右内边距 */
+    font-size: .8rem; /* 字体大小 */
+    color: black; /* 字体颜色 */
+    font-weight: 900; /* 字体粗细 */
+    border-radius: 99px; /* 圆角 */
+    cursor: pointer; /* 鼠标悬停时显示为指针 */
+    transition: color 0.15s ease-in; /* 颜色过渡效果 */
+    white-space: nowrap; /* 防止文字换行 */
+    /*transition: color 1s ease; !* 添加过渡效果 *!*/
 }
 
 .tab:hover {
-    color: #185ee0;
+    color: #185ee0; /* 鼠标悬停时字体颜色 */
 }
 
+/* 选中标签的样式 */
 .container input[type="radio"]:checked + label {
-    color: #185ee0;
+    color: #185ee0; /* 选中时字体颜色 */
 }
 
+/* 选中标签的通知样式 */
 .container input[type="radio"]:checked + label > .notification {
-    background-color: #185ee0;
-    color: #fff;
-    margin: 0px;
+    background-color: #185ee0; /* 背景颜色 */
+    color: #fff; /* 字体颜色 */
+    margin: 0px; /* 外边距 */
 }
 
+/* 滑块样式 */
 .glider {
-    position: absolute;
-    display: block;
-    width: 80px;
+    position: absolute; /* 绝对定位 */
+    display: flex;
     height: 30px;
-    background-color: #185ee0;
-    border-radius: 99px;
-    transition: left 0.25s ease;
-    z-index: 1;
+    background-color: #e6eef9; /* 背景颜色 */
+    z-index: 1; /* 层级 */
+    border-radius: 99px; /* 圆角 */
+    transition: 0.5s ease-out; /* 过渡效果 */
+    /*transition: background-color 1s ease;*/
+    /*backdrop-filter: blur(10px); !* 毛玻璃效果 *!*/
+    /*background: rgba(230, 238, 249,0.8); !* 半透明背景效果不佳，不做了。浪费性能 *!*/
 }
 
-.container input[type="radio"]:nth-of-type(1):checked ~ .glider {
-    left: 5px;
+/* 响应式设计：当屏幕宽度小于700px时 */
+@media (max-width: 700px) {
+    .tabs {
+        transform: scale(0.8); /* 缩放标签栏 */
+    }
+
+    .container {
+        margin-top: 7px; /* 添加顶部边距 */
+    }
 }
 
-.container input[type="radio"]:nth-of-type(2):checked ~ .glider {
-    left: 90px;
-}
-
-.container input[type="radio"]:nth-of-type(3):checked ~ .glider {
-    left: 175px;
-}
-
-.container input[type="radio"]:nth-of-type(4):checked ~ .glider {
-    left: 260px;
-}
-
-/* 欢迎信息样式 */
-.welcome-message {
-    font-size: 2rem;
-    margin-top: 20px;
+/* 卡片容器样式 */
+.cards {
+    display: flex;
+    flex-wrap: wrap; /* 子元素换行 */
+    justify-content: space-between; /* 子元素之间的间距 */
+    gap: 5%; /* 卡片之间的间距 */
+    width: 70%; /* 宽度为70% */
+    max-width: 1200px; /* 最大宽度 */
+    margin-top: 15px; /* 添加顶部边距 */
 }
 
 /* 卡片样式 */
-.cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
-}
-
 .card {
-    width: 200px;
-    margin: 10px;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-}
-
-.card:hover {
-    transform: scale(1.05);
-}
-
-.card__content {
-    padding: 15px;
-}
-
-.card__title {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-.card__description {
-    font-size: 0.9rem;
-    color: #555;
-}
-
-/* 主题切换开关样式 */
-.theme-switch {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+    position: relative; /* 相对定位 */
+    width: 45%; /* 宽度为45% */
+    height: 200px;
+    background-color: #f2f2f2; /* 背景颜色 */
+    border-radius: 10px; /* 圆角 */
     display: flex;
-    align-items: center;
+    align-items: center; /* 垂直居中对齐 */
+    justify-content: center; /* 水平居中对齐 */
+    overflow: hidden; /* 隐藏溢出内容 */
+    perspective: 1000px; /* 3D透视效果 */
+    box-shadow: 0 0 0 5px #ffffff80; /* 阴影效果 */
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 过渡效果 */
+    margin-bottom: 7%; /* 添加垂直间距 */
+    transition: background-color 1s ease, box-shadow 1s ease; /* 添加过渡效果 */
+}
+
+/* 响应式设计：当屏幕宽度小于700px时 */
+@media (max-width: 700px) {
+    .cards {
+        width: 70%; /* 在窄屏设备上，卡片容器宽度为70% */
+        gap: 20px; /* 在窄屏设备上，卡片之间的间距 */
+        margin-top: 15px; /* 添加顶部边距 */
+    }
+
+    .card {
+        width: 100%; /* 在窄屏设备上，卡片宽度为100% */
+        margin-bottom: 20px; /* 在窄屏设备上，增加垂直间距 */
+    }
+}
+
+/* 卡片内SVG图标样式 */
+.card svg {
+    width: 48px; /* 图标宽度 */
+    fill: #333; /* 填充颜色 */
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 过渡效果 */
+}
+
+/* 鼠标悬停卡片时的样式 */
+.card:hover {
+    transform: scale(1.05); /* 放大卡片 */
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2); /* 增加阴影效果 */
+}
+
+/* 卡片内容样式 */
+.card__content {
+    position: absolute; /* 绝对定位 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px; /* 内边距 */
+    box-sizing: border-box; /* 包括内边距和边框在内的宽高计算 */
+    background-color: #f2f2f2; /* 背景颜色 */
+    transform: rotateX(-90deg); /* 初始旋转角度 */
+    transform-origin: bottom; /* 旋转中心 */
+    transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.375); /* 过渡效果 */
+}
+
+/* 鼠标悬停卡片时显示内容 */
+.card:hover .card__content {
+    transform: rotateX(0deg); /* 旋转到0度，显示内容 */
+}
+
+/* 卡片标题样式 */
+.card__title {
+    margin: 0; /* 无外边距 */
+    font-size: 24px; /* 字体大小 */
+    color: #333; /* 字体颜色 */
+    font-weight: 700; /* 字体粗细 */
+    transition: color 1s ease; /* 添加过渡效果 */
+}
+
+/* 鼠标悬停卡片时隐藏SVG图标 */
+.card:hover svg {
+    scale: 0; /* 缩放到0，隐藏图标 */
+}
+
+.card img {
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 添加过渡效果 */
+}
+
+.card:hover img {
+    transform: scale(0); /* 缩放到0，隐藏图片 */
+}
+
+/* 卡片描述样式 */
+.card__description {
+    margin: 10px 0 0; /* 上边距10px，其他无边距 */
+    font-size: 14px; /* 字体大小 */
+    color: #777; /* 字体颜色 */
+    line-height: 1.4; /* 行高 */
+    transition: color 1s ease; /* 添加过渡效果 */
+}
+
+/* 欢迎标语样式 */
+.welcome-message {
+    font-size: 3rem; /* 字体大小 */
+    font-weight: 900; /* 字体加粗 */
+    margin: 20px 0; /* 上下边距 */
+    text-align: center; /* 居中对齐 */
+    transition: color 1s ease; /* 添加过渡效果 */
+}
+
+
+.theme-switch {
+    --toggle-size: 30px;
+    --container-width: 4.22em;
+    --container-height: 1.88em;
+    --container-radius: 6.25em;
+    /* radius 0 - minecraft mode :) */
+    --container-light-bg: #3D7EAE;
+    --container-night-bg: #1D1F2C;
+    --circle-container-diameter: 3.375em;
+    --sun-moon-diameter: 1.59em;
+    --sun-bg: #ECCA2F;
+    --moon-bg: #C4C9D1;
+    --spot-color: #959DB1;
+    --circle-container-offset: calc((var(--circle-container-diameter) - var(--container-height)) / 2 * -1);
+    --stars-color: #fff;
+    --clouds-color: #F3FDFF;
+    --back-clouds-color: #AACADF;
+    --transition: .5s cubic-bezier(0, -0.02, 0.4, 1.25);
+    --circle-transition: .3s cubic-bezier(0, -0.02, 0.35, 1.17);
+    /*position: relative; !* 添加相对定位 *!*/
+    /*top: 7%; !* 调整顶部位置 *!*/
+    position: fixed; /* 固定位置 */
+    top: 10px; /* 距离顶部10px */
+    right: 10px; /* 距离右侧10px */
+    z-index: 1001; /* 确保在.container之上 */
+}
+
+.theme-switch, .theme-switch *, .theme-switch *::before, .theme-switch *::after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: var(--toggle-size);
+}
+
+.theme-switch__container {
+    width: var(--container-width);
+    height: var(--container-height);
+    background-color: var(--container-light-bg);
+    border-radius: var(--container-radius);
+    overflow: hidden;
     cursor: pointer;
+    -webkit-box-shadow: 0em -0.062em 0.062em rgba(0, 0, 0, 0.25), 0em 0.062em 0.125em rgba(255, 255, 255, 0.94);
+    box-shadow: 0em -0.062em 0.062em rgba(0, 0, 0, 0.25), 0em 0.062em 0.125em rgba(255, 255, 255, 0.94);
+    -webkit-transition: var(--transition);
+    -o-transition: var(--transition);
+    transition: var(--transition);
+    position: relative;
+}
+
+.theme-switch__container::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    -webkit-box-shadow: 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset, 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset;
+    box-shadow: 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset, 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset;
+    border-radius: var(--container-radius)
 }
 
 .theme-switch__checkbox {
     display: none;
 }
 
-.theme-switch__container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 25px;
-    background-color: #ccc;
-    border-radius: 25px;
-    position: relative;
-    transition: background-color 0.3s;
-}
-
-.theme-switch__checkbox:checked + .theme-switch__container {
-    background-color: #4caf50;
-}
-
 .theme-switch__circle-container {
+    width: var(--circle-container-diameter);
+    height: var(--circle-container-diameter);
+    background-color: rgba(255, 255, 255, 0.1);
     position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 21px;
-    height: 21px;
-    background-color: #fff;
-    border-radius: 50%;
-    transition: left 0.3s;
-}
-
-.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container {
-    left: 27px;
+    left: var(--circle-container-offset);
+    top: var(--circle-container-offset);
+    border-radius: var(--container-radius);
+    -webkit-box-shadow: inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), 0 0 0 0.625em rgba(255, 255, 255, 0.1), 0 0 0 1.25em rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), inset 0 0 0 3.375em rgba(255, 255, 255, 0.1), 0 0 0 0.625em rgba(255, 255, 255, 0.1), 0 0 0 1.25em rgba(255, 255, 255, 0.1);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-transition: var(--circle-transition);
+    -o-transition: var(--circle-transition);
+    transition: var(--circle-transition);
+    pointer-events: none;
 }
 
 .theme-switch__sun-moon-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
+    pointer-events: auto;
+    position: relative;
+    z-index: 2;
+    width: var(--sun-moon-diameter);
+    height: var(--sun-moon-diameter);
+    margin: auto;
+    border-radius: var(--container-radius);
+    background-color: var(--sun-bg);
+    -webkit-box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #a1872a inset;
+    box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #a1872a inset;
+    -webkit-filter: drop-shadow(0.062em 0.125em 0.125em rgba(0, 0, 0, 0.25)) drop-shadow(0em 0.062em 0.125em rgba(0, 0, 0, 0.25));
+    filter: drop-shadow(0.062em 0.125em 0.125em rgba(0, 0, 0, 0.25)) drop-shadow(0em 0.062em 0.125em rgba(0, 0, 0, 0.25));
+    overflow: hidden;
+    -webkit-transition: var(--transition);
+    -o-transition: var(--transition);
+    transition: var(--transition);
 }
 
 .theme-switch__moon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
     width: 100%;
     height: 100%;
+    background-color: var(--moon-bg);
+    border-radius: inherit;
+    -webkit-box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #969696 inset;
+    box-shadow: 0.062em 0.062em 0.062em 0em rgba(254, 255, 239, 0.61) inset, 0em -0.062em 0.062em 0em #969696 inset;
+    -webkit-transition: var(--transition);
+    -o-transition: var(--transition);
+    transition: var(--transition);
+    position: relative;
 }
 
 .theme-switch__spot {
-    width: 4px;
-    height: 4px;
-    background-color: #fff;
-    border-radius: 50%;
     position: absolute;
-}
-
-.theme-switch__spot:nth-of-type(1) {
-    top: 4px;
-    left: 4px;
+    top: 0.75em;
+    left: 0.312em;
+    width: 0.75em;
+    height: 0.75em;
+    border-radius: var(--container-radius);
+    background-color: var(--spot-color);
+    -webkit-box-shadow: 0em 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
+    box-shadow: 0em 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
 }
 
 .theme-switch__spot:nth-of-type(2) {
-    top: 4px;
-    right: 4px;
+    width: 0.375em;
+    height: 0.375em;
+    top: 0.937em;
+    left: 1.375em;
 }
 
-.theme-switch__spot:nth-of-type(3) {
-    bottom: 4px;
-    left: 4px;
+.theme-switch__spot:nth-last-of-type(3) {
+    width: 0.25em;
+    height: 0.25em;
+    top: 0.312em;
+    left: 0.812em;
+}
+
+.theme-switch__clouds {
+    width: 1.25em;
+    height: 1.25em;
+    background-color: var(--clouds-color);
+    border-radius: var(--container-radius);
+    position: absolute;
+    bottom: -0.625em;
+    left: 0.312em;
+    -webkit-box-shadow: 0.937em 0.312em var(--clouds-color), -0.312em -0.312em var(--back-clouds-color), 1.437em 0.375em var(--clouds-color), 0.5em -0.125em var(--back-clouds-color), 2.187em 0 var(--clouds-color), 1.25em -0.062em var(--back-clouds-color), 2.937em 0.312em var(--clouds-color), 2em -0.312em var(--back-clouds-color), 3.625em -0.062em var(--clouds-color), 2.625em 0em var(--back-clouds-color), 4.5em -0.312em var(--clouds-color), 3.375em -0.437em var(--back-clouds-color), 4.625em -1.75em 0 0.437em var(--clouds-color), 4em -0.625em var(--back-clouds-color), 4.125em -2.125em 0 0.437em var(--back-clouds-color);
+    box-shadow: 0.937em 0.312em var(--clouds-color), -0.312em -0.312em var(--back-clouds-color), 1.437em 0.375em var(--clouds-color), 0.5em -0.125em var(--back-clouds-color), 2.187em 0 var(--clouds-color), 1.25em -0.062em var(--back-clouds-color), 2.937em 0.312em var(--clouds-color), 2em -0.312em var(--back-clouds-color), 3.625em -0.062em var(--clouds-color), 2.625em 0em var(--back-clouds-color), 4.5em -0.312em var(--clouds-color), 3.375em -0.437em var(--back-clouds-color), 4.625em -1.75em 0 0.437em var(--clouds-color), 4em -0.625em var(--back-clouds-color), 4.125em -2.125em 0 0.437em var(--back-clouds-color);
+    -webkit-transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
+    -o-transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
+    transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
+}
+
+.theme-switch__stars-container {
+    position: absolute;
+    color: var(--stars-color);
+    top: -100%;
+    left: 0.312em;
+    width: 2.75em;
+    height: auto;
+    -webkit-transition: var(--transition);
+    -o-transition: var(--transition);
+    transition: var(--transition);
+}
+
+/* actions */
+
+.theme-switch__checkbox:checked + .theme-switch__container {
+    background-color: var(--container-night-bg);
+}
+
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container {
+    left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter));
+}
+
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container:hover {
+    left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter) - 0.187em)
+}
+
+.theme-switch__circle-container:hover {
+    left: calc(var(--circle-container-offset) + 0.187em);
+}
+
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__moon {
+    -webkit-transform: translate(0);
+    -ms-transform: translate(0);
+    transform: translate(0);
+}
+
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__clouds {
+    bottom: -4.062em;
+}
+
+.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__stars-container {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+
+.dark-mode {
+    --theme-color: #1d1f2c;
+    background-color: var(--theme-color);
+    color: #ffffff;
+}
+
+.dark-mode .tabs {
+    background-color: #2c2f3a;
+    box-shadow: 0 0 1px 0 rgba(255, 255, 255, 0.15), 0 6px 12px 0 rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px); /* 毛玻璃效果 */
+    background: rgba(0, 0, 0, 0.3); /* 半透明背景 */
+}
+
+.dark-mode .tab {
+    color: #ffffff;
+}
+
+.dark-mode .tab:hover {
+    color: #185ee0;
+}
+
+.dark-mode .glider {
+    background-color: #3a3d4a;
+}
+
+.dark-mode .card__content {
+    background-color: #181819; /*记得和下面那一个颜色同步修改。*/
+}
+
+.dark-mode .card {
+    background-color: #181819;
+    box-shadow: 0 0 0 5px #2c2f3a80;
+}
+
+.dark-mode .card__title {
+    color: #ffffff;
+}
+
+.dark-mode .card__description {
+    color: #aaaaaa;
+}
+
+.dark-mode .welcome-message {
+    color: #ffffff;
 }
