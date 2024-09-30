@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const body = document.body;
 
     const contentDivs = {
-        'radio-1': document.querySelector('.hello'),
+        'radio-1': document.querySelector('.welcome'),
         'radio-2': document.querySelector('.立即上车'),
         'radio-3': document.querySelector('.睡觉'),
         'radio-4': document.querySelector('.吃饭')

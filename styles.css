@@ -26,10 +26,6 @@ body {
     background-color: var(--theme-color); /* 确保背景颜色应用到整个页面 */
     padding-top: 50px;
 
-
-
-    position: relative;
-    overflow: hidden;
 }
 
 /* 容器样式 */
@@ -39,8 +35,9 @@ body {
     align-items: center; /* 水平居中对齐 */
     width: 100%;
     margin-top: 10px; /* 添加顶部边距 */
-    position: relative; /* 相对定位，以便内容绝对定位 */
+    position: fixed; /* 相对定位，以便内容绝对定位 */
     z-index: 1000; /* 确保在其他内容之上 */
+    top: 5px;
 }
 
 /* 标签栏样式 */
@@ -126,35 +123,38 @@ body {
 }
 
 
-.hello {
-    transition: transform 0.5s ease;
-    display: flex; /* 使用flex布局 */
-    flex-direction: column; /* 保持子元素垂直排列 */
-    width: 70%; /* 确保宽度占满父容器 */
-    box-sizing: border-box; /* 包括padding和border在内的宽度计算 */
+/*.welcome {*/
+/*    transition: transform 0.5s ease;*/
+/*    display: flex; !* 使用flex布局 *!*/
+/*    flex-direction: column; !* 保持子元素垂直排列 *!*/
+/*    width: 70%; !* 确保宽度占满父容器 *!*/
+/*    box-sizing: border-box; !* 包括padding和border在内的宽度计算 *!*/
 
-}
+/*}*/
 
-.hello.move-left {
-    transform: translateX(-200%);
+/*.welcome.move-left {*/
+/*    transform: translateX(-200%);*/
 
-}
+/*}*/
 
 /* 内容切换动画相关样式 */
 
 /* 初始化所有内容区域为隐藏状态 */
-.hello,
+.welcome,
 .立即上车,
 .睡觉,
 .吃饭 {
     opacity: 0;
     position: absolute;
-    top: 100px; /* 根据实际布局调整 */
+    top:80px; /* 根据实际布局调整 */
     left: 50%;
     transform: translateX(-50%);
-    width: 80%; /* 根据需要调整宽度 */
     transition: opacity 0.5s ease;
     z-index: 0; /* 默认层级 */
+    display: flex; /* 使用flex布局 */
+    flex-direction: column; /* 保持子元素垂直排列 */
+    width: 70%; /* 确保宽度占满父容器 */
+    box-sizing: border-box; /* 包括padding和border在内的宽度计算 */
 }
 
 /* 活动状态显示内容 */
