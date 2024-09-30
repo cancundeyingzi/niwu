@@ -151,7 +151,7 @@ body {
     transform: translateX(-50%);
     transition: opacity 0.5s ease;
     z-index: 0; /* 默认层级 */
-    display: flex; /* 使用flex布局 */
+    display: none; /* 使用flex布局 */
     flex-direction: column; /* 保持子元素垂直排列 */
     width: 70%; /* 确保宽度占满父容器 */
     box-sizing: border-box; /* 包括padding和border在内的宽度计算 */
@@ -161,6 +161,7 @@ body {
 .active {
     opacity: 1;
     z-index: 1; /* 置于上层 */
+    display: flex; /* 使用flex布局 */
 }
 
 /* 定义滑入和滑出的关键帧动画 */

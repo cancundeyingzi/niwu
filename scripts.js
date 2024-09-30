@@ -39,7 +39,9 @@ document.addEventListener('DOMContentLoaded', function () {
                     } else {
                         div.classList.add('slide-right-out');
                     }
-                    div.classList.remove('active');
+                    setTimeout(() => {
+                        div.classList.remove('active');
+                    }, 500); // 延迟1秒执行
                 }
             }
         }
