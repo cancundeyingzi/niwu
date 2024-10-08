@@ -35,39 +35,39 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 显示选中的内容区域
     function showContent(selectedId, direction) {
-    for (const [id, div] of Object.entries(contentDivs)) {
-        // 移除所有可能存在的动画类
-        div.classList.remove('slide-left-in', 'slide-right-in', 'slide-left-out', 'slide-right-out');
+        for (const [id, div] of Object.entries(contentDivs)) {
+            // 移除所有可能存在的动画类
+            div.classList.remove('slide-left-in', 'slide-right-in', 'slide-left-out', 'slide-right-out');
 
-        if (id === selectedId) {
-            // 添加进入动画类
-            if (direction === 'left') {
-                div.classList.add('slide-left-in');
-                console.log("触发left-in");
-            } else {
-                div.classList.add('slide-right-in');
-                console.log("触发right-in");
-            }
-            // 添加 active 类以显示内容
-            div.classList.add('active');
-        } else {
-            if (div.classList.contains('active')) {
-                // 添加退出动画类
+            if (id === selectedId) {
+                // 添加进入动画类
                 if (direction === 'left') {
-                    div.classList.add('slide-left-out');
-                    console.log("触发left-out");
+                    div.classList.add('slide-left-in');
+                    console.log("触发left-in");
                 } else {
-                    div.classList.add('slide-right-out');
-                    console.log("触发right-out");
+                    div.classList.add('slide-right-in');
+                    console.log("触发right-in");
                 }
-                // 延迟0.4秒后移除(性能问题,0.5秒在慢的机器上会闪) active 类以隐藏内容
-                setTimeout(() => {
-                    div.classList.remove('active');
-                }, 400);
+                // 添加 active 类以显示内容
+                div.classList.add('active');
+            } else {
+                if (div.classList.contains('active')) {
+                    // 添加退出动画类
+                    if (direction === 'left') {
+                        div.classList.add('slide-left-out');
+                        console.log("触发left-out");
+                    } else {
+                        div.classList.add('slide-right-out');
+                        console.log("触发right-out");
+                    }
+                    // 延迟0.4秒后移除(性能问题,0.5秒在慢的机器上会闪) active 类以隐藏内容
+                    setTimeout(() => {
+                        div.classList.remove('active');
+                    }, 400);
+                }
             }
         }
     }
-}
 
     // 移除动画类以便下次动画使用
     function handleAnimationEnd(event) {
@@ -113,3 +113,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+// 加载动画保持不变
+
+// 移除视差相关的JavaScript代码
+/*
+window.addEventListener('scroll', function () {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.img');
+    console.log('Scrolled:', scrolled); // 调试信息
+    parallaxElements.forEach(element => {
+        console.log('Element:', element); // 调试信息
+        element.style.backgroundPositionY = -(scrolled * 0.5) + 'px'; // 调整滚动速度
+    });
+});
+*/

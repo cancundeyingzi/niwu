@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: mFont;
+    src: url('hanyi.woff2');
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.睡觉 {
+    width: 100vw;
+    height: auto;
+    position: relative; /* 确保相对定位 */
+    overflow: visible; /* 确保不隐藏溢出内容 */
+}
+
+section {
+    /*图片滑动的大小,100就是刚好占据整个页面,大于就是要多滑动一些*/
+    height: 120vh;
+    position: relative;
+    color: rgba(255, 255, 255, .8);
+    font-size: 6vh;
+    /*字体*/
+    font-family: "mFont", Times, serif;
+    /*文字阴影*/
+    text-shadow: 4px 4px rgb(46, 43, 43);
+    /*    弹性布局*/
+    display: flex;
+    /*    水平居中*/
+    justify-content: center;
+    /*垂直居中*/
+    align-items: center;
+
+}
+
+#footer {
+    background-color: #c0b5aa;
+    height: 50vh;
+    color: #fff;
+    font-size: 4vh;
+    text-shadow: none;
+    text-align: center;
+}
+
+/*.img {*/
+/*    overflow: hidden;*/
+/*    !*背景图片不重复*!*/
+/*    background-repeat: no-repeat;*/
+/*    !*图片居中*!*/
+/*    background-position: center;*/
+/*    !*图片固定*!*/
+/*    background-attachment: fixed;*/
+/*    background-size: cover;*/
+/*    !*    禁止用户选中*!*/
+/*    user-select: none;*/
+
+/*}*/
+
+/*#img-one {*/
+/*    background-image: url("1.avif");*/
+/*    background-size: cover;*/
+
+/*}*/
+
+#img-two {
+    background: url("1.jpg") no-repeat fixed center;
+        background-size: cover;
+}
+
+.content-one {
+    background: url("1.jpg") no-repeat fixed center;
+    background-size: cover;
+
+
+}
+
+.content-two {
+    background: url("2.jpg") no-repeat fixed center;
+    background-size: cover;
+
+}
+
+.content-three {
+    background: url("1.jpg") no-repeat fixed center;
+    background-size: cover;
+
+}
+
+.text-box {
+    width: 100%;
+    height: 50%;
+    /*绝对定位*/
+    position: absolute;
+    bottom: 25%;
+    /*文字居中*/
+    text-align: center;
+    /*background-color: rgba(0, 0, 0, .3);*/
+    /*旋转中心*/
+    transform-origin: center bottom;
+    /*扭曲斜切*/
+    transform: skew(0, -8deg);
+}
+
+.text-box .cnt {
+    display: inline-block;
+    text-align: right;
+    margin: 40px 0 10px;
+    width: 90%;
+    max-width: 990px;
+    transform-origin: right bottom;
+    transform: skew(0, 8deg);
+}
+
+.cnt h2 {
+    margin-top: 100px;
+    font-size: 36px;
+    font-family: "mFont", Times, serif;
+    text-shadow: 1px 0 0 #323232;
+    letter-spacing: 0.3em;
+    /*大写字母*/
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.cnt p {
+    font-size: 20px;
+    line-height: 1.7;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+#input,#input2,#input3{
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: -10;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.duli {
+    position: absolute;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+#底部 {
+    font-size: 70%;
+    font-family: "mFont", Times, serif;
+    position: absolute;
+    transform: translate(0, -100%);
+    top: 50vh;
+}

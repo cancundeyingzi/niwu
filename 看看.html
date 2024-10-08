@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>方块图标网页</title>
     <link rel="stylesheet" href="styles.css"> <!-- 引用外部CSS文件 -->
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
 <div class="container">
@@ -17,78 +18,129 @@
         <label class="tab" for="radio-2">立即上车</label> <!-- 标签内容 -->
         <!-- 第三个标签 -->
         <input type="radio" id="radio-3" name="tabs"> <!-- 单选按钮 -->
-        <label class="tab" for="radio-3">睡觉</label> <!-- 标签内容 -->
+        <label class="tab" for="radio-3">动态</label> <!-- 标签内容 -->
         <!-- 第四个标签 -->
         <input type="radio" id="radio-4" name="tabs"> <!-- 单选按钮 -->
-        <label class="tab" for="radio-4">吃饭</label> <!-- 标签内容 -->
+        <label class="tab" for="radio-4">(?)</label> <!-- 标签内容 -->
         <!-- 滑块 -->
         <span class="glider"></span> <!-- 滑块元素 -->
     </div>
 </div>
 <!-- 欢迎标语 -->
 <div class="welcome">
-        <div class="welcome-message">🎈Welcome to ???🥳</div>
+    <div class="welcome-message">🎈Welcome to ???🥳</div>
 
-        <div class="cards">
-            <!-- 第一张卡片 -->
-            <div class="card">
-                <!-- 卡片内容 -->
-                <img src="1.jpg" alt="卡片图片" style="width: 100%; height: 100%; object-fit: cover;">
-                <div class="card__content">
-                    <p class="card__title">Card 1</p> <!-- 卡片标题 -->
-                    <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco.</p> <!-- 卡片描述 -->
-                </div>
+    <div class="cards">
+        <!-- 第一张卡片 -->
+        <div class="card">
+            <!-- 卡片内容 -->
+            <img src="1.jpg" alt="卡片图片" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="card__content">
+                <p class="card__title">Card 1</p> <!-- 卡片标题 -->
+                <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco.</p> <!-- 卡片描述 -->
             </div>
-            <!-- 第二张卡片 -->
-            <div class="card">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <!-- SVG图标 -->
-                    <path d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"></path>
-                    <!-- 图标路径 -->
-                </svg>
-                <div class="card__content">
-                    <p class="card__title">Card 2</p> <!-- 卡片标题 -->
-                    <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco。</p> <!-- 卡片描述 -->
-                </div>
+        </div>
+        <!-- 第二张卡片 -->
+        <div class="card">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <!-- SVG图标 -->
+                <path d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"></path>
+                <!-- 图标路径 -->
+            </svg>
+            <div class="card__content">
+                <p class="card__title">Card 2</p> <!-- 卡片标题 -->
+                <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco。</p> <!-- 卡片描述 -->
             </div>
-            <!-- 第三张卡片 -->
-            <div class="card">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <!-- SVG图标 -->
-                    <path d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"></path>
-                    <!-- 图标路径 -->
-                </svg>
-                <div class="card__content">
-                    <p class="card__title">Card 3</p> <!-- 卡片标题 -->
-                    <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco。</p> <!-- 卡片描述 -->
-                </div>
+        </div>
+        <!-- 第三张卡片 -->
+        <div class="card">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <!-- SVG图标 -->
+                <path d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"></path>
+                <!-- 图标路径 -->
+            </svg>
+            <div class="card__content">
+                <p class="card__title">Card 3</p> <!-- 卡片标题 -->
+                <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco。</p> <!-- 卡片描述 -->
             </div>
-            <!-- 第四张卡片 -->
-            <div class="card">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <!-- SVG图标 -->
-                    <path d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"></path>
-                    <!-- 图标路径 -->
-                </svg>
-                <div class="card__content">
-                    <p class="card__title">Card 4</p> <!-- 卡片标题 -->
-                    <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor
-                        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                        ullamco。</p> <!-- 卡片描述 -->
-                </div>
+        </div>
+        <!-- 第四张卡片 -->
+        <div class="card">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <!-- SVG图标 -->
+                <path d="M20 5H4V19L13.2923 9.70649C13.6828 9.31595 14.3159 9.31591 14.7065 9.70641L20 15.0104V5ZM2 3.9934C2 3.44476 2.45531 3 2.9918 3H21.0082C21.556 3 22 3.44495 22 3.9934V20.0066C22 20.5552 21.5447 21 21.0082 21H2.9918C2.44405 21 2 20.5551 2 20.0066V3.9934ZM8 11C6.89543 11 6 10.1046 6 9C6 7.89543 6.89543 7 8 7C9.10457 7 10 7.89543 10 9C10 10.1046 9.10457 11 8 11Z"></path>
+                <!-- 图标路径 -->
+            </svg>
+            <div class="card__content">
+                <p class="card__title">Card 4</p> <!-- 卡片标题 -->
+                <p class="card__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                    tempor
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco。</p> <!-- 卡片描述 -->
             </div>
         </div>
     </div>
-<div class="立即上车">66<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>6666</br>66</div>
-<div class="吃饭"><div class="welcome-message">🎈吃饭🥳</div></div>
-<div class="睡觉"><div class="welcome-message">🎈睡觉睡觉觉睡觉觉睡觉觉睡觉觉睡觉觉睡觉觉睡觉觉睡觉觉睡觉觉睡觉觉睡觉🥳</div></div>
+</div>
+<div class="立即上车">66<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>6666<br>
+    66
+</div>
+<div class="吃饭">
+    <div class="welcome-message">🎈吃饭🥳</div>
+</div>
+<!-- <div class="睡觉"> -->
+    <!-- <div class="welcome-message"> -->
+       <div class="睡觉">
+            <section id="img-one" class="img">
+                <h1 id="h-one">在下面js里修改</h1>
+            </section>
+            <section class="content-one">
+                <div class="text-box">
+                    <div class="cnt">
+                        <h2>标题</h2>
+                        <p>是日期</p>
+                    </div>
+                </div>
+            </section>
+            <section class="content-two">
+                <div class="text-box">
+                    <div class="cnt">
+                        <h2>标题</h2>
+                        <p>是日期</p>
+                    </div>
+                </div>
+            </section>
+            <section class="content-three">
+                <div class="text-box">
+                    <div class="cnt">
+                        <h2>标题</h2>
+                        <p>是日期</p>
+                    </div>
+                </div>
+            </section>
+            <section id="img-two" class="img">
+                <h1>结尾</h1>
+            </section>
+            <section id="footer">
+                <p>文字
+
+                <div id="底部">
+                    <p>
+                        <a href="用词说明.html" target="_blank" class="btn" id="用词说明">用词说明</a>
+                        <a href="漫展说明.html" target="_blank" class="btn" id="漫展说明">漫展上你可能想问的问题</a>
+                        <a href="其他站点.html" target="_blank" class="btn" id="其他站点">其他站点(施工中)</a>
+                    </p>
+                </div>
+            </section>
+       </div>
+
+    <!-- </div> -->
+<!-- </div> -->
 
 <label class="theme-switch">
     <input type="checkbox" class="theme-switch__checkbox">
