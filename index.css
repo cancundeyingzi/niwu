@@ -18,6 +18,7 @@ body {
     height: auto;
     position: relative; /* 确保相对定位 */
     overflow: visible; /* 确保不隐藏溢出内容 */
+    top:-50px;
 }
 
 section {
@@ -68,29 +69,29 @@ section {
 
 /*}*/
 
-#img-two {
-    background: url("1.jpg") no-repeat fixed center;
-        background-size: cover;
-}
+/*#img-two {*/
+/*    background: url("1.jpg") no-repeat fixed center;*/
+/*        background-size: cover;*/
+/*}*/
 
-.content-one {
-    background: url("1.jpg") no-repeat fixed center;
-    background-size: cover;
+/*.content-one {*/
+/*    background: url("1.jpg") no-repeat fixed center;*/
+/*    background-size: cover;*/
 
 
-}
+/*}*/
 
-.content-two {
-    background: url("2.jpg") no-repeat fixed center;
-    background-size: cover;
+/*.content-two {*/
+/*    background: url("2.jpg") no-repeat fixed center;*/
+/*    background-size: cover;*/
 
-}
+/*}*/
 
-.content-three {
-    background: url("1.jpg") no-repeat fixed center;
-    background-size: cover;
+/*.content-three {*/
+/*    background: url("1.jpg") no-repeat fixed center;*/
+/*    background-size: cover;*/
 
-}
+/*}*/
 
 .text-box {
     width: 100%;
@@ -164,4 +165,47 @@ h1 {
     position: absolute;
     transform: translate(0, -100%);
     top: 50vh;
+}
+
+.parallax-section {
+    position: relative;
+    overflow: hidden;
+        height: 120vh; /* 确保每个 section 的高度足够 */
+}
+
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+        background-repeat: no-repeat; /* 确保背景图片不重复 */
+    z-index: -1;
+}
+
+#img-one .parallax-bg {
+    background-image: url("1.jpg");
+}
+
+.content-one .parallax-bg {
+    background-image: url("1.jpg");
+}
+
+.content-two .parallax-bg {
+    background-image: url("2.jpg");
+}
+
+.content-three .parallax-bg {
+    background-image: url("1.jpg");
+}
+
+#img-two .parallax-bg {
+    background-image: url("1.jpg");
+}
+
+/* 移除之前的背景图片设置 */
+#img-two, .content-one, .content-two, .content-three {
+    background: none;
 }

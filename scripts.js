@@ -1,3 +1,20 @@
+function addParallaxEffect() {
+    const parallaxSections = document.querySelectorAll('.parallax-section');
+
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+
+        parallaxSections.forEach((section) => {
+            const background = section.querySelector('.parallax-bg');
+            const speed = -1; // 调整这个值来改变视差效果的强度
+
+            const yPos = -(scrolled - section.offsetTop) * speed;
+            background.style.transform = `translateY(${yPos}px)`;
+        });
+    });
+}
+
+
 document.addEventListener('DOMContentLoaded', function () {
     // 获取所有标签元素
     const tabs = document.querySelectorAll('.tab');
@@ -17,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
         'radio-3': document.querySelector('.睡觉'),
         'radio-4': document.querySelector('.吃饭')
     };
-
+addParallaxEffect();
     // 记录之前选中的 tab 索引
     let previousIndex = 0;
 
