@@ -23,7 +23,8 @@ body {
     flex-direction: column; /* 垂直方向排列子元素 */
     align-items: center; /* 水平居中对齐 */
     transition: background-color 1s ease, color 1s ease; /* 添加过渡效果 */
-    background-color: var(--theme-color); /* 确保背景颜色应用到整个页面 */
+    /*background-color: var(--theme-color); !* 确保背景颜色应用到整个页面 ,,改为图片*!*/
+    background: url("bg.avif");
     padding-top: 50px;
     /*overflow-x: hidden;禁止手动左右滚动*/
 }
@@ -123,19 +124,7 @@ body {
 }
 
 
-/*.welcome {*/
-/*    transition: transform 0.5s ease;*/
-/*    display: flex; !* 使用flex布局 *!*/
-/*    flex-direction: column; !* 保持子元素垂直排列 *!*/
-/*    width: 70%; !* 确保宽度占满父容器 *!*/
-/*    box-sizing: border-box; !* 包括padding和border在内的宽度计算 *!*/
 
-/*}*/
-
-/*.welcome.move-left {*/
-/*    transform: translateX(-200%);*/
-
-/*}*/
 
 /* 内容切换动画相关样式 */
 
@@ -554,7 +543,7 @@ body {
 
 .dark-mode {
     --theme-color: #1d1f2c;
-    background-color: var(--theme-color);
+    background: var(--theme-color);
     color: #ffffff;
 }
 
@@ -597,3 +586,4 @@ body {
 .dark-mode .welcome-message {
     color: #ffffff;
 }
+

@@ -49,49 +49,7 @@ section {
     text-align: center;
 }
 
-/*.img {*/
-/*    overflow: hidden;*/
-/*    !*背景图片不重复*!*/
-/*    background-repeat: no-repeat;*/
-/*    !*图片居中*!*/
-/*    background-position: center;*/
-/*    !*图片固定*!*/
-/*    background-attachment: fixed;*/
-/*    background-size: cover;*/
-/*    !*    禁止用户选中*!*/
-/*    user-select: none;*/
 
-/*}*/
-
-/*#img-one {*/
-/*    background-image: url("1.avif");*/
-/*    background-size: cover;*/
-
-/*}*/
-
-/*#img-two {*/
-/*    background: url("1.jpg") no-repeat fixed center;*/
-/*        background-size: cover;*/
-/*}*/
-
-/*.content-one {*/
-/*    background: url("1.jpg") no-repeat fixed center;*/
-/*    background-size: cover;*/
-
-
-/*}*/
-
-/*.content-two {*/
-/*    background: url("2.jpg") no-repeat fixed center;*/
-/*    background-size: cover;*/
-
-/*}*/
-
-/*.content-three {*/
-/*    background: url("1.jpg") no-repeat fixed center;*/
-/*    background-size: cover;*/
-
-/*}*/
 
 .text-box {
     width: 100%;
@@ -190,11 +148,11 @@ h1 {
 }
 
 .content-one .parallax-bg {
-    background-image: url("1.jpg");
+    background-image: url("24.7黄山.avif");
 }
 
 .content-two .parallax-bg {
-    background-image: url("2.jpg");
+    background-image: url("24.4横店.avif");
 }
 
 .content-three .parallax-bg {
