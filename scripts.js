@@ -34,6 +34,72 @@ document.addEventListener('DOMContentLoaded', function () {
         'radio-3': document.querySelector('.睡觉'),
         'radio-4': document.querySelector('.吃饭')
     };
+
+    // 下面是 tips 的内容
+    const tipsContainer = document.getElementById('tips-container');
+    const progressBar = document.getElementById('progress-bar');
+    const tips = [//保持偶数,否则进度条方向会有问题
+        "tips:4张图片与顶部导航栏可点击",
+        "tips:我要成为文案高手!!!!!!.jpg"
+    ];
+    let currentTipIndex = 0;
+
+    function showNextTip() {
+        // 先将当前提示淡出
+        tipsContainer.style.opacity = 0;
+        
+        setTimeout(() => {
+            // 重置进度条并隐藏
+            progressBar.style.transition = 'none';
+            progressBar.style.width = '0';
+            
+            // 更新提示内容
+            currentTipIndex = (currentTipIndex + 1) % tips.length;
+            tipsContainer.textContent = tips[currentTipIndex];
+            
+            // 创建临时span测量文本宽度
+            const tempSpan = document.createElement('span');
+            tempSpan.style.visibility = 'hidden';
+            tempSpan.style.position = 'absolute';
+            tempSpan.style.fontSize = window.getComputedStyle(tipsContainer).fontSize;
+            tempSpan.style.fontFamily = window.getComputedStyle(tipsContainer).fontFamily;
+            tempSpan.textContent = tips[currentTipIndex];
+            document.body.appendChild(tempSpan);
+            
+            const textWidth = tempSpan.offsetWidth;
+            document.body.removeChild(tempSpan);
+            
+            // 显示新提示
+            tipsContainer.style.opacity = 1;
+            
+            // 设置进度条方向（左右交替）
+            const isReversed = currentTipIndex % 2 === 1;
+            progressBar.style.transform = isReversed ? 'scaleX(-1)' : 'scaleX(1)';
+            
+            // 根据方向设置起始位置
+            if (isReversed) {
+                progressBar.style.right = `${(tipsContainer.offsetWidth - textWidth) / 2}px`;
+                progressBar.style.left = 'auto';
+            } else {
+                progressBar.style.left = `${(tipsContainer.offsetWidth - textWidth) / 2}px`;
+                progressBar.style.right = 'auto';
+            }
+            
+            progressBar.style.width = '0';
+            progressBar.style.maxWidth = `${textWidth}px`;
+            
+            // 强制浏览器重排
+            progressBar.offsetHeight;
+            
+            // 恢复过渡效果并开始新的进度条动画
+            progressBar.style.transition = 'width 4s linear';
+            progressBar.style.width = `${textWidth}px`;
+        }, 500);
+    }
+
+    setInterval(showNextTip, 4000); // 每4秒执行一次这个函数
+    showNextTip(); // 初始化显示第一个提示
+    // tips结束
 addParallaxEffect();
     // 记录之前选中的 tab 索引
     let previousIndex = 0;
@@ -131,17 +197,9 @@ addParallaxEffect();
     });
 });
 
-// 加载动画保持不变
-
-// 移除视差相关的JavaScript代码
-/*
-window.addEventListener('scroll', function () {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.img');
-    console.log('Scrolled:', scrolled); // 调试信息
-    parallaxElements.forEach(element => {
-        console.log('Element:', element); // 调试信息
-        element.style.backgroundPositionY = -(scrolled * 0.5) + 'px'; // 调整滚动速度
-    });
-});
-*/
+    function copyText2() {
+        const input = document.getElementById("input2");
+        input.select(); // 选中文本
+        document.execCommand("copy"); // 执行浏览器复制命令
+        window.alert('复制1765875868成功');
+    }

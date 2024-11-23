@@ -24,8 +24,10 @@ body {
     align-items: center; /* 水平居中对齐 */
     transition: background-color 1s ease, color 1s ease; /* 添加过渡效果 */
     /*background-color: var(--theme-color); !* 确保背景颜色应用到整个页面 ,,改为图片*!*/
-    background: url("bg.avif");
+    background: url("bg.avif") fixed ;
+    background-size: cover;
     padding-top: 50px;
+    font-family: "mFont", Times, serif;
     /*overflow-x: hidden;禁止手动左右滚动*/
 }
 
@@ -102,25 +104,15 @@ body {
     position: absolute; /* 绝对定位 */
     display: flex;
     height: 30px;
-    background-color: #e6eef9; /* 背景颜色 */
+    /*background-color: #e6eef9; !* 背景颜色 *!*/
     z-index: 1; /* 层级 */
     border-radius: 99px; /* 圆角 */
-    transition: 0.5s ease-out; /* 过渡效果 */
-    /*transition: background-color 1s ease;*/
-    /*backdrop-filter: blur(10px); !* 毛玻璃效果 *!*/
-    /*background: rgba(230, 238, 249,0.8); !* 半透明背景效果不佳，不做了。浪费性能 *!*/
+    /*transition: 0.5s ease-out; !* 过渡效果 *!*/
+    /*display: inline-block;*/
+    /*border-radius: 10em;*/
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1.05);
+    background-color: rgb(216, 226, 255);
 
-}
-
-/* 响应式设计：当屏幕宽度小于700px时 */
-@media (max-width: 700px) {
-    .tabs {
-        transform: scale(0.8); /* 缩放标签栏 */
-    }
-
-    .container {
-        margin-top: 7px; /* 添加顶部边距 */
-    }
 }
 
 
@@ -221,18 +213,19 @@ body {
 .cards {
     display: flex;
     flex-wrap: wrap; /* 子元素换行 */
-    justify-content: space-between; /* 子元素之间的间距 */
+    justify-content: center; /* 修改：水平居中对齐 */
     gap: 5%; /* 卡片之间的间距 */
-    width: 100%; /* 宽度为70% */
+    width: 100%; /* 修改：设置一个合适的宽度 */
     max-width: 1200px; /* 最大宽度 */
-    margin-top: 15px; /* 添加顶部边距 */
+    margin: 0 auto; /* 修改：容器本身居中 */
 }
 
 /* 卡片样式 */
 .card {
     position: relative; /* 相对定位 */
-    width: 45%; /* 宽度为45% */
-    height: 200px;
+    width: calc(45% - 20px); /* 修改：考虑间距的宽度计算 */
+    margin: 10px;
+    height: 250px;
     background-color: #f2f2f2; /* 背景颜色 */
     border-radius: 10px; /* 圆角 */
     display: flex;
@@ -286,6 +279,7 @@ body {
     transform: rotateX(-90deg); /* 初始旋转角度 */
     transform-origin: bottom; /* 旋转中心 */
     transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.375); /* 过渡效果 */
+    will-change: transform;/*删了文字会变糊*/
 }
 
 /* 鼠标悬停卡片时显示内容 */
@@ -336,14 +330,17 @@ body {
 
 .theme-switch {
     --toggle-size: 30px;
-    --container-width: 4.22em;
-    --container-height: 1.88em;
+    /* the size is adjusted using font-size,
+       this is not transform scale,
+       so you can choose any size */
+    --container-width: 5.625em;
+    --container-height: 2.5em;
     --container-radius: 6.25em;
     /* radius 0 - minecraft mode :) */
     --container-light-bg: #3D7EAE;
     --container-night-bg: #1D1F2C;
     --circle-container-diameter: 3.375em;
-    --sun-moon-diameter: 1.59em;
+    --sun-moon-diameter: 2.125em;
     --sun-bg: #ECCA2F;
     --moon-bg: #C4C9D1;
     --spot-color: #959DB1;
@@ -353,23 +350,23 @@ body {
     --back-clouds-color: #AACADF;
     --transition: .5s cubic-bezier(0, -0.02, 0.4, 1.25);
     --circle-transition: .3s cubic-bezier(0, -0.02, 0.35, 1.17);
-    /*position: relative; !* 添加相对定位 *!*/
-    /*top: 7%; !* 调整顶部位置 *!*/
+
     position: fixed; /* 固定位置 */
     top: 10px; /* 距离顶部10px */
     right: 10px; /* 距离右侧10px */
     z-index: 1001; /* 确保在.container之上 */
+    transform: scale(0.7); /* 整体缩放为50% */
+    transform-origin: right top; /* 设置变换的原点为右上角 */
 }
-
 .theme-switch, .theme-switch *, .theme-switch *::before, .theme-switch *::after {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-size: var(--toggle-size);
-}
-
-.theme-switch__container {
+  }
+  
+  .theme-switch__container {
     width: var(--container-width);
     height: var(--container-height);
     background-color: var(--container-light-bg);
@@ -382,9 +379,9 @@ body {
     -o-transition: var(--transition);
     transition: var(--transition);
     position: relative;
-}
-
-.theme-switch__container::before {
+  }
+  
+  .theme-switch__container::before {
     content: "";
     position: absolute;
     z-index: 1;
@@ -392,13 +389,13 @@ body {
     -webkit-box-shadow: 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset, 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset;
     box-shadow: 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset, 0em 0.05em 0.187em rgba(0, 0, 0, 0.25) inset;
     border-radius: var(--container-radius)
-}
-
-.theme-switch__checkbox {
+  }
+  
+  .theme-switch__checkbox {
     display: none;
-}
-
-.theme-switch__circle-container {
+  }
+  
+  .theme-switch__circle-container {
     width: var(--circle-container-diameter);
     height: var(--circle-container-diameter);
     background-color: rgba(255, 255, 255, 0.1);
@@ -415,9 +412,9 @@ body {
     -o-transition: var(--circle-transition);
     transition: var(--circle-transition);
     pointer-events: none;
-}
-
-.theme-switch__sun-moon-container {
+  }
+  
+  .theme-switch__sun-moon-container {
     pointer-events: auto;
     position: relative;
     z-index: 2;
@@ -434,9 +431,9 @@ body {
     -webkit-transition: var(--transition);
     -o-transition: var(--transition);
     transition: var(--transition);
-}
-
-.theme-switch__moon {
+  }
+  
+  .theme-switch__moon {
     -webkit-transform: translateX(100%);
     -ms-transform: translateX(100%);
     transform: translateX(100%);
@@ -450,9 +447,9 @@ body {
     -o-transition: var(--transition);
     transition: var(--transition);
     position: relative;
-}
-
-.theme-switch__spot {
+  }
+  
+  .theme-switch__spot {
     position: absolute;
     top: 0.75em;
     left: 0.312em;
@@ -462,23 +459,23 @@ body {
     background-color: var(--spot-color);
     -webkit-box-shadow: 0em 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
     box-shadow: 0em 0.0312em 0.062em rgba(0, 0, 0, 0.25) inset;
-}
-
-.theme-switch__spot:nth-of-type(2) {
+  }
+  
+  .theme-switch__spot:nth-of-type(2) {
     width: 0.375em;
     height: 0.375em;
     top: 0.937em;
     left: 1.375em;
-}
-
-.theme-switch__spot:nth-last-of-type(3) {
+  }
+  
+  .theme-switch__spot:nth-last-of-type(3) {
     width: 0.25em;
     height: 0.25em;
     top: 0.312em;
     left: 0.812em;
-}
-
-.theme-switch__clouds {
+  }
+  
+  .theme-switch__clouds {
     width: 1.25em;
     height: 1.25em;
     background-color: var(--clouds-color);
@@ -491,9 +488,9 @@ body {
     -webkit-transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
     -o-transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
     transition: 0.5s cubic-bezier(0, -0.02, 0.4, 1.25);
-}
-
-.theme-switch__stars-container {
+  }
+  
+  .theme-switch__stars-container {
     position: absolute;
     color: var(--stars-color);
     top: -100%;
@@ -503,43 +500,42 @@ body {
     -webkit-transition: var(--transition);
     -o-transition: var(--transition);
     transition: var(--transition);
-}
-
-/* actions */
-
-.theme-switch__checkbox:checked + .theme-switch__container {
+  }
+  
+  /* actions */
+  
+  .theme-switch__checkbox:checked + .theme-switch__container {
     background-color: var(--container-night-bg);
-}
-
-.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container {
+  }
+  
+  .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container {
     left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter));
-}
-
-.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container:hover {
+  }
+  
+  .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__circle-container:hover {
     left: calc(100% - var(--circle-container-offset) - var(--circle-container-diameter) - 0.187em)
-}
-
-.theme-switch__circle-container:hover {
+  }
+  
+  .theme-switch__circle-container:hover {
     left: calc(var(--circle-container-offset) + 0.187em);
-}
-
-.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__moon {
+  }
+  
+  .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__moon {
     -webkit-transform: translate(0);
     -ms-transform: translate(0);
     transform: translate(0);
-}
-
-.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__clouds {
+  }
+  
+  .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__clouds {
     bottom: -4.062em;
-}
-
-.theme-switch__checkbox:checked + .theme-switch__container .theme-switch__stars-container {
+  }
+  
+  .theme-switch__checkbox:checked + .theme-switch__container .theme-switch__stars-container {
     top: 50%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-}
-
+  }
 
 .dark-mode {
     --theme-color: #1d1f2c;
@@ -587,3 +583,41 @@ body {
     color: #ffffff;
 }
 
+/* 修改tips容器样式 */
+.tips {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 20px;
+    transition: opacity 0.5s ease;
+    position: relative;
+    padding-bottom: 15px;
+    width: 100%; /* 设置容器宽度为100% */
+}
+
+/* 修改进度条样式 */
+.progress-bar {
+    height: 5px;
+    background-color: #78a7ff;
+    width: 0;
+    position: absolute;
+    bottom: 0;
+    transition: width 4s linear;
+    opacity: 1;
+    border-radius: 2.5px; /* 添加圆角效果，值为height的一半可以实现完全圆角 */
+}
+
+/* 这部分建议放在末尾--------响应式设计：当屏幕宽度小于700px时 */
+@media (max-width: 700px) {
+    .tabs {
+        transform: scale(0.8); /* 缩放标签栏 */
+    }
+
+    .container {
+        margin-top: 7px; /* 添加顶部边距 */
+    }
+    .theme-switch{
+        transform: scale(0.5); /* 整体缩放为50% */
+        transform-origin: right top; /* 设置变换的原点为右上角 */
+    }
+}

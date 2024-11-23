@@ -139,12 +139,12 @@ h1 {
     height: 100%;
     background-size: cover;
     background-position: center;
-        background-repeat: no-repeat; /* 确保背景图片不重复 */
+    background-repeat: no-repeat; /* 确保背景图片不重复 */
     z-index: -1;
 }
 
 #img-one .parallax-bg {
-    background-image: url("1.jpg");
+    background-image: url("1111.avif");
 }
 
 .content-one .parallax-bg {
@@ -156,11 +156,11 @@ h1 {
 }
 
 .content-three .parallax-bg {
-    background-image: url("1.jpg");
+    background-image: url("24.10.1首次漫展.avif");
 }
 
 #img-two .parallax-bg {
-    background-image: url("1.jpg");
+    background-image: url("1111.avif");
 }
 
 /* 移除之前的背景图片设置 */
